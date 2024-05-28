@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import SideNav from './SideNav';
-import styles from '../styles/Layout.module.css'
+import styles from '../styles/Layout.module.css';
 
 const Layout = ({ children }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,8 +20,14 @@ const Layout = ({ children }) => {
   }, []);
 
   const toggleMenu = () => {
-    setShowMenu(!showMenu);
+    if (isMobile) {
+      setShowMenu(prevState => !prevState);
+    }
   }
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location.pathname]);
 
   return (
     <>
@@ -39,10 +46,10 @@ const Layout = ({ children }) => {
             <div className={styles['mobile-nav']}>
               <ul className={styles['mobile-bar']}>
                 <li className='py-2'>
-                  <Link to='/'>Dashboard</Link>
+                  <Link to='/' onClick={toggleMenu}>Dashboard</Link>
                 </li>
                 <li>
-                  <Link to='/schools'>Schools</Link>
+                  <Link to='/schools' onClick={toggleMenu}>Schools</Link>
                 </li>
               </ul>
             </div>
