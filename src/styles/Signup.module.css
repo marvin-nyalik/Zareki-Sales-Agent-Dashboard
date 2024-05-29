@@ -1,0 +1,15 @@
+.signcont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.signcont > div {
+  flex: 2;
+}
+
+.mobile-cont {
+  flex-direction: column;
+}

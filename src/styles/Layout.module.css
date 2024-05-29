@@ -13,12 +13,12 @@
 .sidenav {
   width: 20%;
   height: 100vh;
-  background-color: aquamarine;
 }
 
 .main {
-  width: 80%;
+  width: 100%;
   padding: 0 10px;
+  border-left: 1px solid gray;
 }
 
 .nav {

@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 const SideNav= () => {
   return (
-    <div>
-      <Link to='/'>
-        <div className='flex flex-row justify-between h-10 items-center border-b border-b-1 max-w-[70%] mx-auto'>
-          <i class='bx bxs-dashboard'></i>
-          Dashboard
-        </div>
+    <div className='fixed top-0 ml-2'>
+      <Link to='/' className='flex flex-row items-center space-x-2'>
+        <i className='bx bx-md bxs-dashboard'></i>
+        <p className='font-bold'>Dashboard</p>
       </Link>
-
-      <Link to='/schools'>
-        <div className='flex flex-row justify-between h-10 items-center max-w-[70%] mx-auto'>
-          <i class='bx bxs-school'></i>
-          Schools
-        </div>
+      <Link to='/schools' className='flex flex-row items-center space-x-2'>
+        <i className='bx bx-md bxs-school'></i>
+        <p className='font-bold'>Schools</p>
       </Link>
     </div>
   )

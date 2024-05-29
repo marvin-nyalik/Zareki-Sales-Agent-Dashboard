@@ -1,0 +1,8 @@
+.invoice {
+  width: 90%;
+  height: 20px;
+  background-color: azure;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
