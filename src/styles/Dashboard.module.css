@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.container > div {
+  width: 99%;
+  margin: 30px auto;
+  height: auto;
+}
+
+.sign-ups {
+  width: 70vw;
+}

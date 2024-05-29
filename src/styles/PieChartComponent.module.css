@@ -1,0 +1,12 @@
+.pieChartContainer {
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.barChartContainer {
+  width: 100%;
+}
