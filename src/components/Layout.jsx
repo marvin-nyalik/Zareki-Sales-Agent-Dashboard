@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import SideNav from './SideNav';
 import styles from '../styles/Layout.module.css';
+import { MobileContext } from '../context/MobileContext';
 
 const Layout = ({ children }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -30,7 +31,7 @@ const Layout = ({ children }) => {
   }, [location.pathname]);
 
   return (
-    <>
+    <MobileContext.Provider value={isMobile}>
       {isMobile && (
         <nav>
           <div className={styles.brand}>
@@ -66,7 +67,7 @@ const Layout = ({ children }) => {
           {children}
         </div>
       </div>
-    </>
+    </MobileContext.Provider>
   )
 }
 
