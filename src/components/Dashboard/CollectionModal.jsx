@@ -1,5 +1,5 @@
-import React from 'react';
-import Modal from 'react-modal';
+import React from "react";
+import Modal from "react-modal";
 
 const CollectionModal = ({ isOpen, onClose }) => {
   return (

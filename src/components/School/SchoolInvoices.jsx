@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import InvoiceModal from './InvoiceModal';
-import AddCollectionModal from './AddCollectionModal';
-import { deleteInvoice } from '../../redux/invoices/invoiceSlice';
-import { useDispatch } from 'react-redux';
-import UpdateInvoiceModal from './UpdateInvoiceModal';
+import React, { useState } from "react";
+import InvoiceModal from "./InvoiceModal";
+import AddCollectionModal from "./AddCollectionModal";
+import { deleteInvoice } from "../../redux/invoices/invoiceSlice";
+import { useDispatch } from "react-redux";
+import UpdateInvoiceModal from "./UpdateInvoiceModal";
 
 const SchoolInvoices = ({ school, schoolInvoices }) => {
   const [showCompleted, setShowCompleted] = useState(true);
@@ -55,11 +55,11 @@ const SchoolInvoices = ({ school, schoolInvoices }) => {
     dispatch(deleteInvoice(id))
       .unwrap()
       .then(() => {
-        alert('Deleted');
+        alert("Deleted");
       })
       .catch((error) => {
-        alert('Failed to delete');
-        console.error('Error deleting invoice:', error);
+        alert("Failed to delete");
+        console.error("Error deleting invoice:", error);
       });
   };
 
@@ -78,7 +78,7 @@ const SchoolInvoices = ({ school, schoolInvoices }) => {
     <div>
       <div className="mb-4">
         <div className="flex items-center justify-between">
-          <div className='flex flex-row items-center'>
+          <div className="flex flex-row items-center">
             <label className="flex items-center mr-4">
               <input
                 type="checkbox"
@@ -136,20 +136,31 @@ const SchoolInvoices = ({ school, schoolInvoices }) => {
                 <td className="py-2 px-4 border-b">{invoice.amount}</td>
                 <td className="py-2 px-4 border-b">{invoice.amountPaid}</td>
                 <td className="py-2 px-4 border-b">{invoice.balance}</td>
-                <td className="py-2 px-4 border-b">{invoice.completionStatus ? 'Completed' : 'Pending'}</td>
+                <td className="py-2 px-4 border-b">
+                  {invoice.completionStatus ? "Completed" : "Pending"}
+                </td>
                 <td className="py-2 px-4 border-b">{invoice.daysUntilDue}</td>
                 <td className="py-2 px-4 border-b">
-                  <button onClick={() => handleOpenUpdModal(invoice)} className="bg-blue-200 hover:bg-blue-300 text-blue-800 font-semibold py-1 px-3 rounded-lg">
+                  <button
+                    onClick={() => handleOpenUpdModal(invoice)}
+                    className="bg-blue-200 hover:bg-blue-300 text-blue-800 font-semibold py-1 px-3 rounded-lg"
+                  >
                     Update
                   </button>
                 </td>
                 <td className="py-2 px-4 border-b">
-                  <button onClick={(e) => handleDeleteInv(e, invoice.id)} className="bg-red-200 hover:bg-red-300 text-red-800 font-semibold py-1 px-3 rounded-lg">
+                  <button
+                    onClick={(e) => handleDeleteInv(e, invoice.id)}
+                    className="bg-red-200 hover:bg-red-300 text-red-800 font-semibold py-1 px-3 rounded-lg"
+                  >
                     Delete
                   </button>
                 </td>
                 <td className="py-2 px-4 border-b">
-                  <button onClick={() => handleOpenColModal(invoice)} className="bg-green-200 hover:bg-green-300 text-blue-800 font-semibold py-1 px-3 rounded-lg">
+                  <button
+                    onClick={() => handleOpenColModal(invoice)}
+                    className="bg-green-200 hover:bg-green-300 text-blue-800 font-semibold py-1 px-3 rounded-lg"
+                  >
                     Add Collection
                   </button>
                 </td>
@@ -159,9 +170,24 @@ const SchoolInvoices = ({ school, schoolInvoices }) => {
         </table>
       </div>
 
-      {showColModal && selectedInvoice && <AddCollectionModal invoice={selectedInvoice} handleCloseModal={handleCloseColModal} />}
-      {showModal && <InvoiceModal client={school.name} handleCloseModal={handleCloseModal} />}
-      {showUpdModal && selectedInvoice && <UpdateInvoiceModal invoice={selectedInvoice} handleCloseModal={handleCloseUpdModal} />}
+      {showColModal && selectedInvoice && (
+        <AddCollectionModal
+          invoice={selectedInvoice}
+          handleCloseModal={handleCloseColModal}
+        />
+      )}
+      {showModal && (
+        <InvoiceModal
+          client={school.name}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
+      {showUpdModal && selectedInvoice && (
+        <UpdateInvoiceModal
+          invoice={selectedInvoice}
+          handleCloseModal={handleCloseUpdModal}
+        />
+      )}
     </div>
   );
 };

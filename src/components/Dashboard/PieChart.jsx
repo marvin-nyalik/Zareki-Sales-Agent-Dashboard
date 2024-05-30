@@ -1,13 +1,13 @@
-import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-import styles from '../../styles/PieChartComponent.module.css';
+import React from "react";
+import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import styles from "../../styles/PieChartComponent.module.css";
 
-const COLORS = ['#0088FE', '#00C49F'];
+const COLORS = ["#0088FE", "#00C49F"];
 
 const PieChartComponent = ({ target, progress }) => {
   const data = [
-    { name: 'Target', value: target },
-    { name: 'Progress', value: progress },
+    { name: "Target", value: target },
+    { name: "Progress", value: progress },
   ];
 
   return (
