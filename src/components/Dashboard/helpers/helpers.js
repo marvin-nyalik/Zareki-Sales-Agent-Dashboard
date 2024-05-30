@@ -125,10 +125,11 @@ export const calculateSchoolBalance = (schoolName, invoices, collections) => {
   const schoolInvoices = invoices.filter((invoice) => invoice.client === schoolName);
   const schoolCollections = collections.filter((collection) => collection.client === schoolName);
 
-  const totalInvoicesAmount = schoolInvoices.reduce((total, invoice) => total + invoice.amount, 0);
-  const totalCollectionsAmount = schoolCollections.reduce((total, collection) => total + collection.amount, 0);
+  const totalInvoicesAmount = schoolInvoices.reduce((total, invoice) => total + parseFloat(invoice.amount), 0);
+  const totalCollectionsAmount = schoolCollections.reduce((total, collection) => total + parseFloat(collection.amount), 0);
 
   const schoolBalance = totalInvoicesAmount - totalCollectionsAmount;
 
   return schoolBalance;
 };
+
