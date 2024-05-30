@@ -37,8 +37,13 @@
   width: 100%;
   height: 100%;
   background-color: aquamarine;
+  z-index: 5;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.no-scroll {
   overflow: hidden;
 }
 
