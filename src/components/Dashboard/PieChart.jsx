@@ -2,14 +2,14 @@ import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import styles from '../../styles/PieChartComponent.module.css';
 
-const data = [
-  { name: 'Target', value: 400 },
-  { name: 'Progress', value: 300 },
-];
-
 const COLORS = ['#0088FE', '#00C49F'];
 
-const PieChartComponent = () => {
+const PieChartComponent = ({ target, progress }) => {
+  const data = [
+    { name: 'Target', value: target },
+    { name: 'Progress', value: progress },
+  ];
+
   return (
     <div className={styles.pieChartContainer}>
       <PieChart width={350} height={200}>
