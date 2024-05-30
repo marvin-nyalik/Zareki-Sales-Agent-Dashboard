@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { updateInvoice } from '../../redux/invoices/invoiceSlice';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { updateInvoice } from "../../redux/invoices/invoiceSlice";
+import { useDispatch } from "react-redux";
 
 const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
   const initialState = {
@@ -9,7 +9,7 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
     dueDate: invoice.dueDate,
     status: invoice.completionStatus,
   };
-  
+
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'status' ? value === 'true' : value, // handle status as boolean
+      [name]: name === "status" ? value === "true" : value, // handle status as boolean
     });
   };
 
@@ -45,9 +45,9 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
       if (response.error) {
         throw new Error(response.error.message);
       }
-      alert('Invoice updated');
+      alert("Invoice updated");
     } catch (error) {
-      alert('Update Failed');
+      alert("Update Failed");
     } finally {
       handleCloseModal();
       setFormData(initialState);
@@ -61,7 +61,9 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
         <h2 className="text-lg font-semibold mb-4">Update Invoice</h2>
         <form onSubmit={handleUpdateInvoice}>
           <div className="mb-4">
-            <label htmlFor="amount" className="block mb-1">Amount:</label>
+            <label htmlFor="amount" className="block mb-1">
+              Amount:
+            </label>
             <input
               type="number"
               id="amount"
@@ -73,7 +75,9 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="status" className="block mb-1">Status:</label>
+            <label htmlFor="status" className="block mb-1">
+              Status:
+            </label>
             <select
               id="status"
               name="status"
@@ -87,7 +91,9 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
             </select>
           </div>
           <div className="mb-4">
-            <label htmlFor="product" className="block mb-1">Product:</label>
+            <label htmlFor="product" className="block mb-1">
+              Product:
+            </label>
             <select
               id="product"
               name="product"
@@ -102,7 +108,9 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
             </select>
           </div>
           <div className="mb-4">
-            <label htmlFor="dueDate" className="block mb-1">Due Date:</label>
+            <label htmlFor="dueDate" className="block mb-1">
+              Due Date:
+            </label>
             <input
               type="date"
               id="dueDate"
@@ -119,7 +127,7 @@ const UpdateInvoiceModal = ({ invoice, handleCloseModal }) => {
               className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg"
               disabled={loading}
             >
-              {loading ? 'Updating...' : 'Update'}
+              {loading ? "Updating..." : "Update"}
             </button>
             <button
               type="button"

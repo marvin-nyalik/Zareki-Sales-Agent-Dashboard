@@ -1,9 +1,17 @@
-import React, { useContext } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import styles from '../../styles/PieChartComponent.module.css';
-import { MobileContext } from '../../context/MobileContext';
+import React, { useContext } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import styles from "../../styles/PieChartComponent.module.css";
+import { MobileContext } from "../../context/MobileContext";
 
-const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
+const COLORS = ["#8884d8", "#82ca9d", "#ffc658"];
 
 const BarChartComponent = ({ product }) => {
   const isMobile = useContext(MobileContext);
@@ -20,7 +28,12 @@ const BarChartComponent = ({ product }) => {
 
   return (
     <div className={styles.barChartContainer}>
-      <BarChart width={isMobile ? 400 : 300} height={300} data={data} barSize={30}>
+      <BarChart
+        width={isMobile ? 400 : 300}
+        height={300}
+        data={data}
+        barSize={30}
+      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="schoolType" />
         <YAxis />

@@ -1,5 +1,5 @@
-import React from 'react';
-import Collection from './Collection';
+import React from "react";
+import Collection from "./Collection";
 
 const Collections = ({ collections }) => {
   return (
@@ -16,13 +16,21 @@ const Collections = ({ collections }) => {
           </tr>
         </thead>
         <tbody>
-          {collections.length > 0 ? collections.map(col => (
-            <Collection key={col.id} collection={col} />
-          )) : (<tr><td colSpan="5" className="py-2 px-4 text-center">No collections</td></tr>)}
+          {collections.length > 0 ? (
+            collections.map((col) => (
+              <Collection key={col.id} collection={col} />
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5" className="py-2 px-4 text-center">
+                No collections
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
   );
-}
+};
 
 export default Collections;

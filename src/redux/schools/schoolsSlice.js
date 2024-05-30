@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const schoolsAPIUrl = `https://mock-server-k755.onrender.com/schools`;
 
@@ -9,13 +9,16 @@ const initialState = {
   error: null,
 };
 
-export const fetchSchools = createAsyncThunk('schools/fetchSchools', async () => {
-  const response = await axios.get(schoolsAPIUrl);
-  return response.data;
-});
+export const fetchSchools = createAsyncThunk(
+  "schools/fetchSchools",
+  async () => {
+    const response = await axios.get(schoolsAPIUrl);
+    return response.data;
+  }
+);
 
 const schoolsSlice = createSlice({
-  name: 'schools',
+  name: "schools",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
