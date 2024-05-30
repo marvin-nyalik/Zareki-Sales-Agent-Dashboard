@@ -3,25 +3,29 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import styles from '../../styles/PieChartComponent.module.css';
 import { MobileContext } from '../../context/MobileContext';
 
-const data = [
-  { name: 'Page A', uv: 4000, pv: 2400, amt: 2400 },
-  { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 },
-  { name: 'Page C', uv: 2000, pv: 9800, amt: 2290 },
-];
+const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
-const BarChartComponent = () => {
+const BarChartComponent = ({ product }) => {
   const isMobile = useContext(MobileContext);
+
+  if (!product) {
+    return <div>No data available</div>;
+  }
+
+  const data = Object.keys(product).map((schoolType, index) => ({
+    schoolType,
+    count: product[schoolType],
+    fill: COLORS[index % COLORS.length],
+  }));
 
   return (
     <div className={styles.barChartContainer}>
-      <BarChart width={isMobile ? 500 : 300} height={300} data={data}>
+      <BarChart width={isMobile ? 400 : 300} height={300} data={data} barSize={30}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="schoolType" />
         <YAxis />
         <Tooltip />
-        <Legend />
-        <Bar dataKey="uv" fill="#8884d8" />
-        <Bar dataKey="pv" fill="#82ca9d" />
+        <Bar dataKey="count" fill="#8884d8" />
       </BarChart>
     </div>
   );

@@ -1,93 +1,58 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Layout from './Layout';
 import SchoolInvoices from './School/SchoolInvoices';
 import Collections from './School/Collections';
+import { calculateSchoolBalance } from './Dashboard/helpers/helpers';
 
 const SchoolDetails = () => {
   const location = useLocation();
   const { school } = location.state;
-  const invoices = [{
-    "id": 1,
-    "invoiceNumber": "INV001",
-    "invoiceItem": "Zeraki Finance",
-    "creationDate": "2024-05-01",
-    "dueDate": "2024-06-01",
-    "amount": 10000,
-    "amountPaid": 0,
-    "balance": 10000,
-    "completionStatus": false,
-    "daysUntilDue": 3,
-    "client": "Greenwood Secondary School"
-  },
-  {
-    "id": 2,
-    "invoiceNumber": "INV002",
-    "invoiceItem": "Zeraki Timetable",
-    "creationDate": "2024-05-05",
-    "dueDate": "2024-06-05",
-    "amount": 12000,
-    "amountPaid": 0,
-    "balance": 12000,
-    "completionStatus": true,
-    "daysUntilDue": 7,
-    "client": "Sunrise Primary School"
-  }]
+  const { invoices, collections } = useSelector(state => ({
+    invoices: state.invoices.invoices.filter(invoice => invoice.client === school.name),
+    collections: state.collections.collections.filter(collection => collection.client === school.name),
+  }));
 
-  const collections = [
-    {
-      "id": 1,
-      "invoiceNumber": "INV001",
-      "collectionNumber": "COL001",
-      "dateOfCollection": "2024-06-01",
-      "status": "Valid",
-      "amount": 5000,
-      "client": "Greenwood Secondary School"
-    },
-    {
-      "id": 2,
-      "invoiceNumber": "INV002",
-      "collectionNumber": "COL002",
-      "dateOfCollection": "2024-06-05",
-      "status": "Valid",
-      "amount": 8000,
-      "client": "Sunrise Primary School"
-    }]
+  const schBalance = calculateSchoolBalance(school.name, invoices, collections);
 
+  if(invoices.length <=0 || collections.length <= 0) {
+    return (<div>Loading</div>)
+  }
   return (
-    <>
-      <Layout>
-        <div className="p-4">
-          <h1 className='font-bold text-xl text-black mb-4'>{school.name}</h1>
-          <div className="flex flex-col md:flex-row justify-between gap-4">
-          <div className="flex-1">
-              <p>Type: <span className="font-semibold">{school.type}</span></p>
-              <p>County: <span className="font-semibold my-1">{school.county}</span></p>
-              <p>Joined: <span className="font-semibold">{school.registrationDate}</span></p>
-              <p>Contact: <span className="font-semibold my-1">{school.contact}</span></p>
-              <p>Balance: <span className="font-semibold">{school.schoolBalance}</span></p>
-            </div>
-            <div className="flex-1">
-              <h3 className='font-bold'>PRODUCTS</h3>
-              {school.products.map((prod, index) => (
-                <p key={index}><span className="font-semibold">{prod}</span></p>
-                ))}
-            </div>
-          </div>
-          
-          <div className="invoices py-2">
-            <div className="mb-2 text-2xl text-blue-400">Invoices</div>
-            <SchoolInvoices schoolInvoices={invoices}/>
-          </div>
-
-          <div className="collections py-2">
-            <div className="mb-2 text-2xl text-blue-400">Collections</div>
-            <Collections collections={collections}/>
-          </div>
+    <Layout>
+      <div>
+      <h2 className='font-bold text-xl py-2'>{school.name}</h2>
+      <div className="flex flex-col md:flex-row items-start md:items-center md:justify-between space-y-4 md:space-y-0 md:space-x-4">
+        <div className="flex flex-col items-start justify-start space-y-2">
+          <p><span className="font-bold">Type:</span> {school.type}</p>
+          <p><span className="font-bold">County:</span> {school.county}</p>
+          <p><span className="font-bold">Contact Info:</span> {school.contactInfo}</p>
         </div>
-      </Layout>
-    </>
+        <div className="flex flex-col items-start justify-start space-y-2">
+          <p><span className="font-bold">Registration Date:</span> {school.registrationDate}</p>
+          <p><span className="font-bold">School Balance:</span> {schBalance}</p>
+        </div>
+        <div className="flex flex-col items-start justify-start space-y-2">
+        <h3 className='font-bold'>Products</h3>
+          {school.products.map(prod => (
+            <p key={prod}>{prod}</p>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="py-2 text-2xl text-blue-400">Invoices</div>
+        <SchoolInvoices school={school} schoolInvoices={invoices} />
+      </div>
+
+      <div className='mb-3'>
+        <div className="py-2 text-2xl text-blue-400">Collections</div>
+        <Collections collections={collections} />
+      </div>
+      </div>
+    </Layout>
   );
-}
+};
 
 export default SchoolDetails;
