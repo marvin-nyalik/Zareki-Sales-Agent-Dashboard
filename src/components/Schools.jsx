@@ -1,35 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Layout from "./Layout";
 import School from "./School/School";
 
 const Schools = () => {
-  const schools = [
-    {
-      "id": 1,
-      "name": "Greenwood Secondary School",
-      "type": "Secondary",
-      "products": [
-        "Zeraki Finance",
-        "Zeraki Analytics"
-      ],
-      "county": "Nairobi",
-      "registrationDate": "2022-01-15",
-      "contact": "contact@greenwoodsecondary.edu",
-      "schoolBalance": 15000
-    },
-    {
-      "id": 2,
-      "name": "Sunrise Primary School",
-      "type": "Primary",
-      "products": [
-        "Zeraki Timetable"
-      ],
-      "county": "Kisumu",
-      "registrationDate": "2021-06-23",
-      "contact": "info@sunriseprimary.edu",
-      "schoolBalance": 12000
-    },
-  ];
+ const { schools, loading, error } = useSelector(state => state.schools);
+
+ if (loading) {
+  return <div>Loading...</div>;
+ }
+
+ if (error) {
+  return <div>Error: {error.message}</div>;
+ }
 
   return (
     <>
@@ -52,13 +35,12 @@ const Schools = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4" className="py-2 px-4 text-center">No schools available</td>
+                  <td colSpan="4" className="py-2 px-4 text-center">Loading...</td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
-
       </Layout>
     </>
   );

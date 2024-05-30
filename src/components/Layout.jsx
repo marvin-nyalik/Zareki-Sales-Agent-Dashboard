@@ -30,6 +30,14 @@ const Layout = ({ children }) => {
     setShowMenu(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (showMenu) {
+      document.body.classList.add(styles['no-scroll']);
+    } else {
+      document.body.classList.remove(styles['no-scroll']);
+    }
+  }, [showMenu]);
+
   return (
     <MobileContext.Provider value={isMobile}>
       {isMobile && (
