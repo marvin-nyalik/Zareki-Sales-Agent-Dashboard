@@ -25,14 +25,46 @@ The Zareki Sales Agent Dashboard is a web application designed to provide compre
 
 - Frontend: React.js, Tailwind CSS
 - Backend: [Mock json-server](https://mock-server-k755.onrender.com/)
+
+  - **[ ] CAUTION**
+
+   `This json-server is deployed on [render](https://render.com/) and takes an average of 40 seconds to spin up after a period of inactivity.`
+
 - Charts and Visualizations: Recharts
 
 ## Getting Started
 
 1. Clone the repository: `git clone https://github.com/marvin-nyalik/Zareki-Sales-Agent-Dashboard.git`
+2. Change directory into the project `cd zareki-sales-agent-dashboard`
 2. Install dependencies: `npm install`
-3. Start the development server: `npm start`
-4. Access the dashboard in your browser: `http://localhost:3000`
+3. Start the development server: `npm run dev`
+4. Access the dashboard in your browser: `http://localhost:5173`
+
+## Design Decisions
+
+### Global State Management with Redux
+
+Using Redux for state management provides a centralized and predictable state container. This allows for:
+
+- **Consistent State Across the App**: By having a global state, components can access and update the state consistently without prop drilling, ensuring data consistency throughout the app.
+- **Enhanced Debugging**: Redux DevTools allows for easier tracking of state changes and debugging, making the development process more efficient.
+- **Better State Management**: Redux’s strict rules for updating the state reduce the chances of unexpected mutations, leading to more reliable and maintainable code.
+
+### Modular Code Organization
+
+Organizing the code in a modular way helps in:
+
+- **Scalability**: As the application grows, having a modular structure allows for adding new features or modules without affecting existing ones.
+- **Maintainability**: Each module can be developed, tested, and debugged independently, making the codebase easier to maintain.
+- **Reusability**: Modular code promotes reusability of components and functions, reducing redundancy and effort.
+
+### Separation of Concerns with Helpers
+
+Separating concerns by using helper functions and constants stored in dedicated files ensures that:
+
+- **Code Readability**: Keeping business logic separate from the UI components makes the code easier to read and understand.
+- **Reusability**: Common functions and constants can be reused across different parts of the application, promoting DRY (Don't Repeat Yourself) principles.
+- **Testability**: Isolated functions and constants are easier to test, leading to more robust and reliable code.
 
 ## Contributing
 
