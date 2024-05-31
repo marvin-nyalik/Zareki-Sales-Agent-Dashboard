@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import styles from "../../styles/PieChartComponent.module.css";
 
-const COLORS = ["#0088FE", "#00C49F"];
+const COLORS = ["#b81425", "#1460b8"];
 
 const PieChartComponent = ({ target, progress }) => {
   const data = [
@@ -19,7 +19,6 @@ const PieChartComponent = ({ target, progress }) => {
           cy="50%"
           labelLine={false}
           outerRadius={80}
-          fill="#8884d8"
           dataKey="value"
         >
           {data.map((entry, index) => (
