@@ -11,7 +11,7 @@ const Card = ({ label, count, details }) => {
         <div className="extra-details border-t border-gray-300 pt-2 mt-2">
           {Object.entries(details).map(([key, value]) => (
             <div key={key} className="text-sm flex justify-between">
-              <span className="font-semibold">{key} </span>
+              <span className="font-semibold mr-2">{key.split(' ')[1]} </span>
               <span>{value}</span>
             </div>
           ))}
