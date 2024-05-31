@@ -127,45 +127,55 @@ const SchoolInvoices = ({ school, schoolInvoices }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredInvoices.map((invoice) => (
-              <tr key={invoice.invoiceNumber} className="hover:bg-gray-100">
-                <td className="py-2 px-4 border-b">{invoice.invoiceNumber}</td>
-                <td className="py-2 px-4 border-b">{invoice.invoiceItem}</td>
-                <td className="py-2 px-4 border-b">{invoice.creationDate}</td>
-                <td className="py-2 px-4 border-b">{invoice.dueDate}</td>
-                <td className="py-2 px-4 border-b">{invoice.amount}</td>
-                <td className="py-2 px-4 border-b">{invoice.amountPaid}</td>
-                <td className="py-2 px-4 border-b">{invoice.balance}</td>
-                <td className="py-2 px-4 border-b">
-                  {invoice.completionStatus ? "Completed" : "Pending"}
-                </td>
-                <td className="py-2 px-4 border-b">{invoice.daysUntilDue}</td>
-                <td className="py-2 px-4 border-b">
-                  <button
-                    onClick={() => handleOpenUpdModal(invoice)}
-                    className="bg-blue-200 hover:bg-blue-300 text-blue-800 font-semibold py-1 px-3 rounded-lg"
-                  >
-                    Update
-                  </button>
-                </td>
-                <td className="py-2 px-4 border-b">
-                  <button
-                    onClick={(e) => handleDeleteInv(e, invoice.id)}
-                    className="bg-red-200 hover:bg-red-300 text-red-800 font-semibold py-1 px-3 rounded-lg"
-                  >
-                    Delete
-                  </button>
-                </td>
-                <td className="py-2 px-4 border-b">
-                  <button
-                    onClick={() => handleOpenColModal(invoice)}
-                    className="bg-green-200 hover:bg-green-300 text-blue-800 font-semibold py-1 px-3 rounded-lg"
-                  >
-                    Add Collection
-                  </button>
+            {filteredInvoices ? (
+              filteredInvoices.map((invoice) => (
+                <tr key={invoice.invoiceNumber} className="hover:bg-gray-100">
+                  <td className="py-2 px-4 border-b">
+                    {invoice.invoiceNumber}
+                  </td>
+                  <td className="py-2 px-4 border-b">{invoice.invoiceItem}</td>
+                  <td className="py-2 px-4 border-b">{invoice.creationDate}</td>
+                  <td className="py-2 px-4 border-b">{invoice.dueDate}</td>
+                  <td className="py-2 px-4 border-b">{invoice.amount}</td>
+                  <td className="py-2 px-4 border-b">{invoice.amountPaid}</td>
+                  <td className="py-2 px-4 border-b">{invoice.balance}</td>
+                  <td className="py-2 px-4 border-b">
+                    {invoice.completionStatus ? "Completed" : "Pending"}
+                  </td>
+                  <td className="py-2 px-4 border-b">{invoice.daysUntilDue}</td>
+                  <td className="py-2 px-4 border-b">
+                    <button
+                      onClick={() => handleOpenUpdModal(invoice)}
+                      className="bg-blue-200 hover:bg-blue-300 text-blue-800 font-semibold py-1 px-3 rounded-lg"
+                    >
+                      Update
+                    </button>
+                  </td>
+                  <td className="py-2 px-4 border-b">
+                    <button
+                      onClick={(e) => handleDeleteInv(e, invoice.id)}
+                      className="bg-red-200 hover:bg-red-300 text-red-800 font-semibold py-1 px-3 rounded-lg"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                  <td className="py-2 px-4 border-b">
+                    <button
+                      onClick={() => handleOpenColModal(invoice)}
+                      className="bg-green-200 hover:bg-green-300 text-blue-800 font-semibold py-1 px-3 rounded-lg"
+                    >
+                      Add Collection
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="py-2 px-4 text-center">
+                  No invoices available
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
