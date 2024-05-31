@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import styles from "../../styles/PieChartComponent.module.css";
 
-const COLORS = ["#b81425", "#1460b8"];
+const COLORS = ["#14b8b8", "#1460b8"];
 
 const PieChartComponent = ({ target, progress }) => {
   const data = [
