@@ -11,7 +11,7 @@ import {
 import styles from "../../styles/PieChartComponent.module.css";
 import { MobileContext } from "../../context/MobileContext";
 
-const COLORS = ["#8884d8", "#82ca9d", "#ffc658"];
+const COLORS = ["#34eb80", "#1456b8", "#9f14b8"];
 
 const BarChartComponent = ({ product }) => {
   const isMobile = useContext(MobileContext);
