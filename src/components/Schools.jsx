@@ -55,7 +55,7 @@ const Schools = () => {
               ) : (
                 <tr>
                   <td colSpan="4" className="py-2 px-4 text-center">
-                    Loading...
+                    <Loading />
                   </td>
                 </tr>
               )}
