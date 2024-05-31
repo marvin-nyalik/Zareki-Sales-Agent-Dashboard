@@ -5,19 +5,20 @@ import { calculateSchoolBalance } from "../Dashboard/helpers/helpers";
 
 const School = ({ school }) => {
   const { invoices, collections } = useSelector((state) => ({
-    invoices: state.invoices.invoices.filter(
-      (invoice) => invoice.client === school.name
-    ),
-    collections: state.collections.collections.filter(
-      (collection) => collection.client === school.name
-    ),
+    invoices:
+      state.invoices.invoices.filter(
+        (invoice) => invoice.client === school.name
+      ) || [],
+    collections:
+      state.collections.collections.filter(
+        (collection) => collection.client === school.name
+      ) || [],
   }));
 
-  const schBalance = calculateSchoolBalance(school.name, invoices, collections);
-
-  if (invoices.length <= 0 || collections.length <= 0) {
-    return <div>Loading</div>;
-  }
+  const schBalance =
+    invoices.length > 0 && collections.length > 0
+      ? calculateSchoolBalance(school.name, invoices, collections)
+      : 0;
 
   return (
     <tr className="border-b">
