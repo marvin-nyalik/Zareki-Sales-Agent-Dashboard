@@ -14,7 +14,6 @@ export const fetchInvoices = createAsyncThunk(
   "invoices/fetchInvoices",
   async () => {
     const response = await axios.get(invoiceAPIUrl);
-    console.log(response.data);
     return response.data;
   }
 );
