@@ -1,21 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import Layout from "./Layout";
 import School from "./School/School";
 import Loading from "./Loading";
-import { fetchSchools } from "../redux/schools/schoolsSlice";
-import { fetchCollections } from "../redux/collections/collectionSlice";
-import { fetchInvoices } from "../redux/invoices/invoiceSlice";
 
 const Schools = () => {
   const { schools, loading, error } = useSelector((state) => state.schools);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCollections());
-    dispatch(fetchSchools());
-    dispatch(fetchInvoices());
-  }, [dispatch]);
 
   if (loading) {
     return (

@@ -1,26 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import Layout from "./Layout";
 import styles from "../styles/Dashboard.module.css";
 import TopCardMetrics from "./Dashboard/TopCardMetrics";
 import Targets from "./Dashboard/Targets";
 import SignUps from "./Dashboard/SignUps";
 import UpcomingInv from "./Dashboard/UpcomingInv";
-import { fetchCollections } from "../redux/collections/collectionSlice";
-import { fetchInvoices } from "../redux/invoices/invoiceSlice";
-import { fetchSchools } from "../redux/schools/schoolsSlice";
 import Loading from "./Loading";
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCollections());
-    dispatch(fetchSchools());
-    dispatch(fetchInvoices());
-  }, [dispatch]);
-
-  const { schools, invoices, collections, loading, error } = useSelector(
+    const { schools, invoices, collections, loading, error } = useSelector(
     (state) => ({
       schools: state.schools.schools,
       invoices: state.invoices.invoices,
