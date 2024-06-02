@@ -31,7 +31,12 @@ const TopCardMetrics = ({ invoices, collections, schools }) => {
         <Card label={"Collections"} count={collections.length} maxValue={100} />
 
         {/* Sign Ups Card */}
-        <Card label={"Sign Ups"} count={totalSignUps} details={productCounts} maxValue={50} />
+        <Card
+          label={"Sign Ups"}
+          count={totalSignUps}
+          details={productCounts}
+          maxValue={50}
+        />
 
         {/* Revenue Card */}
         <Card
@@ -42,7 +47,7 @@ const TopCardMetrics = ({ invoices, collections, schools }) => {
         />
 
         {/* Bounced Cheques card */}
-        <Card label={"Bounced Cheques"} count={bouncedCheques} maxValue={30}/>
+        <Card label={"Bounced Cheques"} count={bouncedCheques} maxValue={30} />
       </div>
     </div>
   );

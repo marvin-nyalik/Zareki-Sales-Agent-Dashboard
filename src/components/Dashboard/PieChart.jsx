@@ -14,7 +14,11 @@ const PieChartComponent = ({ target, progress }) => {
 
   return (
     <div className={styles.pieChartContainer}>
-      <PieChart width={isMobile ? 500 : 350} height={isMobile ? 230 : 200} className="rounded-xl shadow-lg mb-3">
+      <PieChart
+        width={isMobile ? 500 : 350}
+        height={isMobile ? 230 : 200}
+        className="rounded-xl shadow-lg mb-3"
+      >
         <Pie
           data={data}
           cx="50%"
