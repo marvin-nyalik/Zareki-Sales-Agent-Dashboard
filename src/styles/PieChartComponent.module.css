@@ -3,8 +3,15 @@
   height: 80%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+.pieChartContainer > div {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .barChartContainer {

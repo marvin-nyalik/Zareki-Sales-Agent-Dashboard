@@ -14,8 +14,9 @@ const PieChartComponent = ({ target, progress }) => {
 
   return (
     <div className={styles.pieChartContainer}>
+      <div>
       <PieChart
-        width={isMobile ? 500 : 350}
+        width={isMobile ? 450 : 350}
         height={isMobile ? 230 : 200}
         className="rounded-xl shadow-lg mb-3"
       >
@@ -34,6 +35,7 @@ const PieChartComponent = ({ target, progress }) => {
         <Tooltip />
         <Legend align="center" />
       </PieChart>
+    </div>
     </div>
   );
 };
