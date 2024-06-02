@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import styles from "../../styles/PieChartComponent.module.css";
+import { MobileContext } from "../../context/MobileContext";
 
 const COLORS = ["#14b8b8", "#1460b8"];
 
 const PieChartComponent = ({ target, progress }) => {
+  const isMobile = useContext(MobileContext);
   const data = [
     { name: "Target", value: target },
     { name: "Progress", value: progress },
@@ -12,7 +14,7 @@ const PieChartComponent = ({ target, progress }) => {
 
   return (
     <div className={styles.pieChartContainer}>
-      <PieChart width={350} height={200}>
+      <PieChart width={isMobile ? 500 : 350} height={isMobile ? 230 : 200} className="rounded-xl shadow-lg mb-3">
         <Pie
           data={data}
           cx="50%"
