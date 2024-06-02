@@ -24,7 +24,7 @@ const TopCardMetrics = ({ invoices, collections, schools }) => {
   const productCounts = countProductOccurrences(schools);
 
   return (
-    <div>
+    <div className="w-full mx-auto">
       <div className="mb-2 text-2xl text-blue-400">Top Metrics</div>
       <div className={isMobile ? styles["mobile-cont"] : styles.container}>
         {/* Collections card */}
