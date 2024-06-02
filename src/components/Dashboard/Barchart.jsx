@@ -29,7 +29,7 @@ const BarChartComponent = ({ product }) => {
   return (
     <div className={styles.barChartContainer}>
       <BarChart
-        width={isMobile ? 330 : 200}
+        width={isMobile ? 330 : 300}
         height={300}
         data={data}
         barSize={30}
