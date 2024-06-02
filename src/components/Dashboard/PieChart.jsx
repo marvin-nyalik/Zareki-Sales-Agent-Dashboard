@@ -15,27 +15,27 @@ const PieChartComponent = ({ target, progress }) => {
   return (
     <div className={styles.pieChartContainer}>
       <div>
-      <PieChart
-        width={isMobile ? 450 : 350}
-        height={isMobile ? 230 : 200}
-        className="rounded-xl shadow-lg mb-3"
-      >
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          outerRadius={80}
-          dataKey="value"
+        <PieChart
+          width={isMobile ? 400 : 350}
+          height={isMobile ? 230 : 200}
+          className="rounded-xl shadow-lg mb-3"
         >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend align="center" />
-      </PieChart>
-    </div>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            outerRadius={80}
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend align="center" />
+        </PieChart>
+      </div>
     </div>
   );
 };

@@ -1,17 +1,15 @@
 .pieChartContainer {
-  width: 100%;
-  height: 80%;
-  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-.pieChartContainer > div {
-  width: 95%;
-  margin: 0 auto;
+.pieChartWrapper {
+  width: 90%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .barChartContainer {
