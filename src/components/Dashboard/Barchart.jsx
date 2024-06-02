@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 import styles from "../../styles/PieChartComponent.module.css";
 import { MobileContext } from "../../context/MobileContext";
@@ -27,12 +26,14 @@ const BarChartComponent = ({ product }) => {
   }));
 
   return (
+    <div className="w-full mx-auto">
     <div className={styles.barChartContainer}>
       <BarChart
-        width={isMobile ? 400 : 300}
+        width={isMobile ? 500 : 300}
         height={300}
         data={data}
         barSize={30}
+        className="rounded-xl shadow-md mb-3"
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="schoolType" />
@@ -40,6 +41,7 @@ const BarChartComponent = ({ product }) => {
         <Tooltip />
         <Bar dataKey="count" fill="#8884d8" />
       </BarChart>
+    </div>
     </div>
   );
 };
