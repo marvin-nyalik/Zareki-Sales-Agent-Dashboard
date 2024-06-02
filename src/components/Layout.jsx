@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
       {isMobile && (
         <nav>
           <div className={styles.brand}>
-            <h3 className="pl-2">ZAREKA DASHBOARD</h3>
+            <h3 className="pl-2">ZAREKI DASHBOARD</h3>
             {!showMenu ? (
               <i onClick={toggleMenu} className="bx bx-md bx-menu pr-3"></i>
             ) : (
