@@ -1,27 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
-import { useContext } from "react";
 import { MobileContext } from "../../context/MobileContext";
+import styles from "../../styles/Card.module.css";
 
 const Card = ({ label, count, details, maxValue }) => {
   const isMobile = useContext(MobileContext);
+
   return (
     <div className="p-3 mb-3 border border-1 border-gray-300 rounded-xl shadow-xl bg-white mx-auto">
       <h3 className="text-base text-center mb-4 font-semibold">
         {label.toUpperCase()}
       </h3>
-      <ReactSpeedometer
-        width={isMobile ? 450 : 200}
-        height={isMobile ? 250 : 150}
-        value={count}
-        minValue={0}
-        maxValue={maxValue}
-        needleColor="blue"
-        startColor="green"
-        segments={label === "Revenue" ? 5 : 10}
-        endColor="blue"
-        className="mx-auto mb-2 border-b border-gray-200 border"
-      />
+      <div className="mx-auto max-w-[90%] flex justify-center items-center">
+        <ReactSpeedometer
+          width={isMobile ? 330 : 200}
+          height={isMobile ? 250 : 150}
+          value={count}
+          minValue={0}
+          maxValue={maxValue}
+          needleColor="blue"
+          startColor="green"
+          segments={label === "Revenue" ? 5 : 10}
+          endColor="blue"
+          className={`mx-auto mb-2 border-b border-gray-200 border`}
+        />
+      </div>
       <div className="text-center mb-2">
         <p className="font-bold text-green-500 text-xl mb-1">{count}</p>
       </div>
